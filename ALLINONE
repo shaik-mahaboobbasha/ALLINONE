@@ -1,0 +1,199 @@
+Git:
+----
+git config --global user.name= "Basha"
+git config --global user.email= "Basha123@gmail.com"
+git config --global alias.l = "log"
+git config --global --unset alias.l
+git init 
+git add <filename>
+git add .
+git checkout 
+git commit -m "labelname"
+git reset --soft <commitId Below one>
+git reset --hard <filename>
+git reset --mixed <commitId below one>
+git push "url"
+Given Crendentials
+Before that add remote repository
+create Repository and copy url 
+git add remote -v ( to see repositories)
+git add remote Url
+git clone url 
+git push
+git branch --list
+git branch 
+git branch <branchname> (or) git checkout -b <branchname>
+git checkout <branchname>
+git merge 
+git rebase 
+git cherry-pick <specific commitId>
+git push origin branch <branchname>
+git branch -d <branchname> (local Repository)
+git push origin branch -d <branchname>
+git tag <tagname> <commitId>
+git push --tags
+git tag -d <tagname>
+git push origin tag -d <tagname>
+git stash save "stashname>
+git stash pop <stashId>
+git stash apply <stashid>
+git stash show -p <stashid>
+git show <commitId>
+git log --oneline
+git log 
+git status
+git log -n --oneline
+Eg: git log -2 --oneline
+git log --author="basha"
+git log --since="yy-mm-dd"
+
+Maven:
+------
+mvn archetype:generate
+mvn clean
+mvn test
+mvn package
+mvn install
+mvn compile
+mvn validate
+mvn verify
+mvn integration-test
+mvn deploy
+
+Docker 
+------
+docker search images
+docker images 
+docker pull <image>
+docker run -it <imagename/ImageId>
+ctrl P+Q (with out disturbing the running container)
+docker run -it <Imagename/ImageId>
+exit (it stop the container)
+docker run -itd <Imagename/ImageId>
+docker ps 
+docker ps -a 
+docker ps -qa
+docker attach <containerId>
+docker exec -itd --name=<containername> containerId /bin/bash
+docker run -it -p 8080:80 <imagename>
+docker buit -t <imagename>:latest <pathofthedockerfile>
+docker commit <containername> <imagename>
+vi DockerFile
+From Centos
+MAINTAINER <SHAIKBASHA> <SHAIKBASHSA@GMAIL.COM>
+Label Myname=Basha
+Env a 10
+RUN yum upadate -y
+COPY /localpath /destinationpath
+ENTRYPOINT ["echo", "Hello,"]
+CMD ["World"]
+WORKDIR [/tmp]
+EXPOSE 8080
+docker buit -t <imagename>:latest <pathofthedockerfile>
+docker rm <containerid>
+docker rmi <ImageId>
+docker logs <containerId>
+docker inspect <containerId>
+docker image inspect <Imageid/Imagename>
+docker history <imagename>
+docker volume create --name DataVolume1
+docker volume rm DataVolume1
+docker volume ls
+docker volume inspect DataVolume1
+docker run -it -v <Volumename>:<pathinthecontainer> Imagename
+docker volume prune
+docker image prune
+docker cp hostpath <containerid>:destinationpathinthecontainer
+docker run -it --name=Container2 --volumes-from <Container1> ubuntu
+docker restart <containerId>
+docker stop <containerid>
+docker kill <containerId>
+docker rm <containerId>
+docker kill $(docker ps -aq)
+docker login
+docker push Imagename:latest
+docker tag <PreviousImagename> <latestImagename>
+docker container rename <previouscontainername> <latestnameofcontainer>
+docker container export <containerId> myfile.tar
+docker image import myfie.tar <imagename>
+docker network create --subnet=172.168.0.1 -d <bridgename> <networkname>
+docker network inspect <networkname>
+docker network rm <networkname>
+docker run -it --network=<networkname> <imagename>
+docker network connect <network-name> <container-name or id>
+docker network disconnect <network-name> <container-name or id>
+
+Chef:
+----
+chef workstation
+chef server
+chef nodes
+
+
+mkdir cookbooks
+cd cookbooks
+chef generate cookbook <cookbookname>
+cd <cookbookname>
+chef generate recipe <recipename>
+cd ~
+vi cookbookname/recipes/recipename.rb
+file 'touch file.txt' do
+action: create
+content: 'this is a file'
+end
+chef spec ruby -c cookbookname/recipes/recipename.rb
+chef exec -c ruby cookbookname/recipes/recipename.rb
+chef-client -zr "recipes[Cookbookname::recipename]"
+
+
+
+connect chef workstation to chef server 
+download starter kit and paste into chef workstation
+
+mkdir cookbooks
+cd cookbooks
+chef generate cookbook <cookbookname>
+cd <cookbookname>
+chef generate recipe <recipename>
+cd ~
+vi cookbookname/recipes/recipename.rb
+file 'touch file.txt' do
+content 'this is a file'
+done
+chef spec ruby -c cookbookname/recipes/recipename.rb
+chef exec -c ruby cookbookname/recipes/recipename.rb
+knife cookbook upload <cookbookname>
+knife node run-list set node1 "recipes[Cookbookname::recipename]"
+chef-client (In destination side i.e Node)
+
+
+
+Create node and connect with chef server 
+
+knife bootstrap <ipaddress> --ssh-user --ec2-user  -N <Nodename> --sudo -i key.pem
+
+
+cd roles 
+vi devOps.rb
+name "DevOps"
+description "web server role"
+run_list "recipe[testcookbookname::testrecipe]
+
+:wq!
+
+knife role from file roles/devOps.rb
+knife node run_list set node1 "role[devOps]
+
+
+Ansible:
+--------
+ 
+
+
+
+
+
+
+
+
+
